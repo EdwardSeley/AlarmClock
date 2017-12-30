@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Alarm Clock</string>
+    <string name="date_label">Date</string>
+    <string name="time_label">Time</string>
+    <string name="turned_on_label">On/Off: \t</string>
+    <string name="add_alarm">add_alarm</string>
+</resources>
