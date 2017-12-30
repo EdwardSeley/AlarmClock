@@ -69,9 +69,10 @@ public class AlarmListFragment extends Fragment {
                 AlarmStorage.get(getActivity()).addAlarm(alarm);
                 Intent intent = AlarmActivity.newIntent(getActivity(), alarm.getID());
                 startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

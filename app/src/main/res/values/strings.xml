@@ -3,5 +3,6 @@
     <string name="date_label">Date</string>
     <string name="time_label">Time</string>
     <string name="turned_on_label">On/Off: \t</string>
-    <string name="add_alarm">add_alarm</string>
+    <string name="add_alarm">Add Alarm</string>
+    <string name="delete_alarm">Delete Alarm</string>
 </resources>

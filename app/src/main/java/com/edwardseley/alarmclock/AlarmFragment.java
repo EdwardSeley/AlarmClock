@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -31,6 +34,26 @@ public class AlarmFragment extends Fragment {
         super.onCreate(savedInstanceState);
         UUID uuid = (UUID) getArguments().getSerializable(BUNDLE_TAG);
         mAlarm = AlarmStorage.get(getActivity()).getAlarm(uuid);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.alarm_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.delete_alarm:
+                AlarmStorage.get(getActivity()).removeAlarm(mAlarm);
+                getActivity().finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Nullable
@@ -75,5 +98,12 @@ public class AlarmFragment extends Fragment {
         AlarmFragment fragment = new AlarmFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mAlarm != null)
+            AlarmStorage.get(getActivity()).updateAlarm(mAlarm);
     }
 }

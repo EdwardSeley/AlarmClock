@@ -13,9 +13,14 @@ public class Alarm {
 
     public Alarm()
     {
+        this(UUID.randomUUID());
+    }
+
+    public Alarm(UUID uuid)
+    {
         mDate = new Date();
         mTime = new Time(mDate.getTime());
-        mID = UUID.randomUUID();
+        mID = uuid;
         mTurnedOn = true;
     }
 
